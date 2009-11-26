@@ -75,7 +75,7 @@ module AuthlogicFacebookConnect
 
       def validate_by_facebook_connect
         facebook_session = controller.facebook_session
-        self.attempted_record = facebook_user_class.find(:first, :conditions => { facebook_uid_field => facebook_session.user.uid }).try(:"#{klass}".to_s.underscore)
+        self.attempted_record = facebook_user_class.find(:first, :conditions => { facebook_uid_field => facebook_session.user.uid })
 
         unless self.attempted_record || facebook_skip_new_user_creation
           begin
